@@ -1,13 +1,6 @@
-import glob
-import os
-import re
-
-import pandas as pd
 import streamlit as st
-import gettext as _
-from PIL import Image
+from streamlit_pdf_viewer import pdf_viewer
 
-import base64
 
 st.set_page_config(layout="wide")
 
@@ -23,22 +16,10 @@ st.sidebar.header(("About"))
 
 # Display content
 
-# Path to the PDF file
-pdf_path = "sample.pdf"
 
-# Read the PDF file as binary
-with open(pdf_path,"rb") as f:
-    base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+pdf_url = "https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf"
 
-# Display the PDF in an iframe
-st.markdown(
-    f"""
-    <iframe src="data:application/pdf;base64,{base64_pdf}"
-    width="100%" height="1000rem" style="border: none;"></iframe>
-    """,
-    unsafe_allow_html=True,
-)
-
+st.write(pdf_viewer(pdf_url))
 #---------------------------------------------------------------------------------------------------------                -------
 
 # import streamlit as st
